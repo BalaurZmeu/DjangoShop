@@ -1,10 +1,12 @@
 {% extends "main.html" %}
 
+{% load static %}
+
 {% block title %}
-  <title>Cart</title>
+  <title>Produsele in Cos</title>
 {% endblock %}
 
 {% block content %}
-  <h3>Cart</h3><br>
+  <h3>Produsele in Cos</h3><br>
   <a href="{% url 'checkout' %}">Buy</a>
 {% endblock %}
