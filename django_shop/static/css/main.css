@@ -9,13 +9,19 @@ h4,
 h5,
 h6 {
     color: hsl(0, 0%, 30%);
+    margin-left: 20px;
 }
 
 .box-element {
+    margin: 0 50px;
     box-shadow: hsl(0, 0%, 80%) 0 0 16px;
     background-color: #fff;
     border-radius: 4px;
     padding: 10px;
+}
+
+.navbar {
+    padding: 10 20px;
 }
 
 .thumbnail {
@@ -65,6 +71,11 @@ h6 {
 
 .btn {
     border-radius: 0;
+}
+
+.btn-success {
+    float: right;
+    margin: 5px;
 }
 
 .row-image {
