@@ -56,7 +56,7 @@
         </form>
       </div>
       
-      <div class="box-element" id="payment-info">
+      <div class="box-element hidden" id="payment-info">
         <small>Paypal Options</small>
       </div>
       
@@ -64,7 +64,21 @@
     
     <div class="col-lg-6">
       <div class="box-element">
-      
+        <a class="btn btn-outline-dark" href="{% url 'cart' %}">
+          &#x2190; Inapoi la Cos
+        </a>
+        <hr>
+        <h3>Comanda:</h3>
+        <hr>
+        <div class="cart-row">
+          <div style="flex:2;"><img class="row-image"
+            src="{% static 'images/placeholder.png' %}"></div>
+          <div style="flex:2;">Produsul 1</div>
+          <div style="flex:1;">$20</div>
+          <div style="flex:1;">x2</div>
+        </div>
+        <h5>Items:  2</h5>
+        <h5>Total:  $4</h5>
       </div>
     </div>
   </div>
