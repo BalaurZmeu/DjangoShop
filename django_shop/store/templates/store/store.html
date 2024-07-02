@@ -17,10 +17,9 @@
       </a>
       <div class="box-element product">
         <h6><strong>{{ product.name }}</strong></h6>
-        <button data-product="{{ product.id }}" data-action="add"
-                class="btn btn-outline-secondary add-btn update-cart">
+        <a class="btn btn-outline-secondary add-btn update-cart" href="{% url 'add_to_cart' product.id %}">
           Adauga in Cos
-        </button>
+        </a>
         <a class="btn btn-outline-success" href="#">
           Detalii
         </a>
@@ -32,3 +31,4 @@
     {% endfor %}
   </div>
 {% endblock %}
+
