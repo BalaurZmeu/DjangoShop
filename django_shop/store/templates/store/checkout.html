@@ -1,4 +1,4 @@
-{% extends "main.html" %}
+{% extends "store/main.html" %}
 
 {% load static %}
 
@@ -57,7 +57,7 @@
 
           <hr>
           <input id="form-button" type="submit"
-            class="btn btn-success btn-block" value="Continue">
+            class="btn btn-success btn-block" value="Inainte">
         </form>
       </div>
       
@@ -84,7 +84,7 @@
           <div style="flex:1;">{{ item.quantity }}</div>
         </div>
         {% endfor %}
-        <h5>Items: {{ order.get_cart_items }}</h5>
+        <h5>Produse: {{ order.get_cart_items }}</h5>
         <h5>Total: ${{ order.get_cart_total|floatformat:2 }}</h5>
       </div>
     </div>
