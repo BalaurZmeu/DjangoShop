@@ -12,39 +12,40 @@
   <div class="col-lg-6">
     <div class="box-element" id="form-wrapper">
       <form id="form">
+      {% csrf_token %}
         <div id="user-info">
           <div class="form-field">
-            <input required class="form-control" type="text" name="name" placeholder="Numele.." />
+            <input required class="form-control" type="text" name="name" placeholder="Numele..">
           </div>
           <div class="form-field">
-            <input class="form-control" type="email" name="email" placeholder="Email.." />
-          </div>
-          <div class="form-field">
-            <input required class="form-control" type="tel" name="phone" 
-                   placeholder="Nr. de mobil: 79123456" pattern="[0-9]{8}" />
-          </div>
+            <input class="form-control" type="email" name="email" placeholder="Email..">
+          </div>          
         </div>
 
         <div id="shipping-info">
-          <hr />
+          <hr>
           <p>Datele pentru livrare</p>
-          <hr />
+          <hr>
           <div class="form-field">
-            <input class="form-control" type="text" name="address" placeholder="Adresa.." />
+            <input class="form-control" type="text" name="address" placeholder="Strada, Casa, Apartamentul">
           </div>
           <div class="form-field">
-            <input class="form-control" type="text" name="city" placeholder="Orasul.." />
+            <input class="form-control" type="text" name="city" placeholder="Orasul/Satul">
           </div>
           <div class="form-field">
-            <input class="form-control" type="text" name="state" placeholder="Raionul.." />
+            <input class="form-control" type="text" name="state" placeholder="Raionul">
           </div>
           <div class="form-field">
-            <input class="form-control" type="text" name="zipcode" placeholder="Cod postal.." />
+            <input class="form-control" type="text" name="zipcode" placeholder="Indexul Postal">
+          </div>
+          <div class="form-field">
+            <input required class="form-control" type="tel" name="phone" 
+                   placeholder="Nr. de mobil: 79123456" pattern="[0-9]{8}">
           </div>
         </div>
 
         <hr />
-        <input id="form-button" type="submit" class="btn btn-success btn-block" value="Inainte" />
+        <input id="form-button" type="submit" class="btn btn-success btn-block" value="Inainte">
       </form>
     </div>
 
@@ -59,12 +60,12 @@
       <a class="btn btn-outline-dark" href="{% url 'cart' %}">
         &#x2190; Inapoi la Cos
       </a>
-      <hr />
+      <hr>
       <h3>Comanda:</h3>
-      <hr />
+      <hr>
       {% for item in items %}
       <div class="cart-row">
-        <div style="flex: 2;"><img class="row-image" src="{{ item.product.imageURL }}" /></div>
+        <div style="flex: 2;"><img class="row-image" src="{{ item.product.imageURL }}"></div>
 
         <div style="flex: 2;">{{ item.product.name }}</div>
         <div style="flex: 1;">${{ item.product.price|floatformat:2 }}</div>
@@ -97,6 +98,9 @@
   }
 
   var form = document.getElementById("form");
+  csrftoken = form.getElementsByTagName("input")[0].value
+  console.log('Newtoken', csrftoken)
+  
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     console.log("Form Submitted...");
@@ -130,12 +134,12 @@
       shippingInfo.city = form.city.value;
       shippingInfo.state = form.state.value;
       shippingInfo.zipcode = form.zipcode.value;
+      shippingInfo.phone = form.phone.value;
     }
 
     if (user == "AnonymousUser") {
       userFormData.name = form.name.value;
       userFormData.email = form.email.value;
-      userFormData.phone = form.phone.value;
     }
 
     console.log("Shipping Info:", shippingInfo);
@@ -156,7 +160,7 @@
         alert("Transaction completed");
 
         cart = {};
-        document.cookie = "cart=" + JSON.stringify(cart) + ";domain=;path=/";
+        document.cookie = "cart=" + JSON.stringify(cart) + ";domain=;path=/;SameSite=None;Secure";
 
         window.location.href = "{% url 'store' %}";
       });
