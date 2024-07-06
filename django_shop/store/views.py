@@ -79,9 +79,15 @@ def processOrder(request):
     total = float(data['form']['total'])
     order.transaction_id = transaction_id
 
+    print("Total from form:", total)
+    print("Order cart total:", order.get_cart_total)
+
     if total == order.get_cart_total:
         order.complete = True
-    order.save()
+        order.save()  # Ensure the order is saved after setting complete=True
+        print("Order marked as complete")
+
+    order.save()  # Save the order to ensure all changes are persisted
 
     if order.shipping is True:
         ShippingAddress.objects.create(
@@ -95,3 +101,5 @@ def processOrder(request):
         )
 
     return JsonResponse('Payment submitted..', safe=False)
+
+
