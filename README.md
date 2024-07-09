@@ -1,5 +1,12 @@
 # DjangoShop
 
+An e-commerce website, implemented using Django framework. You can add products and images to the website using
+the admin page. Registered and non-registered users can add products to the cart and then order them.
+The website is implemented using Romanian language. The 'Details' page, 'Register' and 'Login' pages are not ready yet.
+
+--
+### How to use the program:
+
 #### 1. Create a virtual environment. (Recommended)
 After downloading the files on your computer, open the terminal and navigate to the DjangoShop-main directory.
 Run the following command to create a virtual environment in this directory:
