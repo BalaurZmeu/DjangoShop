@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 import json
 import datetime
@@ -38,6 +38,11 @@ def checkout(request):
 
     context = {'items': items, 'order': order, 'cartItems': cartItems}
     return render(request, 'store/checkout.html', context)
+
+
+def product(request, pk):
+    product = get_object_or_404(Product, pk=pk)
+    return render(request, 'store/product.html', {'product': product})
 
 
 def updateItem(request):

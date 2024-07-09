@@ -1,5 +1,10 @@
 {% extends 'store/main.html' %}
 {% load static %}
+
+{% block title %}
+<title>Magazin | Home</title>
+{% endblock title %}
+
 {% block content %}
 <div class="row">
   {% for product in products %}
@@ -13,7 +18,7 @@
         Adauga in Cos
       </button>
 
-      <a class="btn btn-outline-success" href="#">Detalii</a>
+      <a class="btn btn-outline-success" href="{% url 'product' product.id %}">Detalii</a>
       <h4 style="display: inline-block; float: right;"><strong>${{product.price|floatformat:2}}</strong></h4>
     </div>
   </div>

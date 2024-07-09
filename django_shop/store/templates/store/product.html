@@ -1,0 +1,13 @@
+{% extends 'store/main.html' %}
+{% load static %}
+
+{% block title %}
+<title>Magazin | {{ product.name }}</title>
+{% endblock title %}
+
+{% block content %}
+  <h2>{{ product.name }}</h2>
+  <img src="{{ product.imageURL }}" />
+  <p><strong>Pretul: ${{ product.price }}</strong></p>
+{% endblock content %}
+
