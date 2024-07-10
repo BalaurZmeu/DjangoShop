@@ -104,8 +104,6 @@ h6 {
     display: inline-block;
     font-weight: 700;
     padding-right: 10px;
-
-
 }
 
 .chg-quantity {
@@ -123,4 +121,12 @@ h6 {
 
 .hidden {
     display: none !important;
+}
+
+.navbar-link {
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
 }

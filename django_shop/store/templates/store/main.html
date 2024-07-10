@@ -74,15 +74,28 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <!-- <li class="nav-item active">
-	        <a class="nav-link" href="{% url 'cart' %}">
-            Cosul <span class="sr-only">(current)</span>
-          </a>
-	      </li> -->
+         {% if user.is_authenticated %}
+           <li class="nav-item navbar-link"><span class="align-middle">User: {{ user.get_username }}</span></li>
+              
+           <li class="nav-item">
+             <form id="login_form" method="post"
+               action="{% url 'logout' %}?next={{ request.path }}">
+                 {% csrf_token %}
+                   <a class="btn btn-warning" href="javascript:{}"
+                      onclick="document.getElementById('login_form').
+                      submit(); return false;">
+                     Logout
+                   </a>
+             </form>
+           </li>
+   
+           {% else %}
+             <li class="nav-item navbar-link">
+               <a class="btn btn-warning" href="{% url 'login' %}?next={{ request.path }}">Login</a>
+             </li>
+           {% endif %}
         </ul>
         <div class="form-inline my-2 my-lg-0">
-          <a href="#" class="btn btn-warning">Login</a>
-
           <a href="{% url 'cart' %}">
             <img id="cart-icon" src="{% static 'images/cart.png' %}" />
           </a>

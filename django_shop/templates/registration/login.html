@@ -1,16 +1,4 @@
-{% extends "base_generic.html" %}
-
-{% block style %}
-<style>
-  form {
-    margin: 40px 20px;
-  }
-  tr,td {
-    border-color: white;
-    border-width: 10px;
-  }
-</style>
-{% endblock %}
+{% extends "store/main.html" %}
 
 {% block content %}
   
@@ -51,7 +39,6 @@
     </table>
     <input type="hidden" name="next" value="{{ next }}">
   </form>
-  
-  <p><a href="{% url 'password_reset' %}">Lost password?</a></p>
-  
+
 {% endblock %}
+
