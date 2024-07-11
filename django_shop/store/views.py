@@ -1,9 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 import json
 import datetime
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login
 from .utils import cookieCart, cartData, guestOrder
 
 
@@ -11,21 +12,24 @@ def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('store')
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('store')
     else:
         form = UserCreationForm()
     return render(request, 'store/user_register.html', {'form': form })
-    
+
 
 def store(request):
     data = cartData(request)
 
     cartItems = data['cartItems']
-    order = data['order']
-    items = data['items']
-
     products = Product.objects.all()
+
     context = {'products': products, 'cartItems': cartItems}
     return render(request, 'store/store.html', context)
 
@@ -53,8 +57,13 @@ def checkout(request):
 
 
 def product(request, pk):
+    data = cartData(request)
+
+    cartItems = data['cartItems']
+    
     product = get_object_or_404(Product, pk=pk)
-    return render(request, 'store/product.html', {'product': product})
+    context = {'product': product, 'cartItems': cartItems}
+    return render(request, 'store/product.html', context)
 
 
 def updateItem(request):

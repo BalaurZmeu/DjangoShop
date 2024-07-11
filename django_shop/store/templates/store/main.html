@@ -13,7 +13,8 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
-
+    
+    {% block script %}
     <script type="text/javascript">
       var user = "{{request.user}}";
 
@@ -62,8 +63,11 @@
       }
       console.log("Cart:", cart);
     </script>
+    {% endblock script %}
+    
   </head>
   <body>
+    {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'store' %}">magazin.md</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" 
@@ -95,7 +99,7 @@
              </li>
              
              <li class="nav-item navbar-link">
-               <a class="btn btn-warning" href="{% url 'register' %}?next={{ request.path }}">Register</a>
+               <a class="btn btn-warning" href="{% url 'register' %}">Register</a>
              </li>
            {% endif %}
         </ul>
@@ -107,6 +111,7 @@
         </div>
       </div>
     </nav>
+    {% endblock navbar %}
 
     <div class="container">
       <br />

@@ -1,4 +1,4 @@
-{% extends "store/main.html" %}
+{% extends "store/main-log.html" %}
 
 {% block title %}
   <title>Registration</title>
@@ -9,8 +9,8 @@
   <div class="col-sm-6">
     <form method="post">
       {% csrf_token %}
-      {{ form }}
-      <button>Inainte</button>
+        {{ form }}
+        <button>Inainte</button>
     </form>
   </div>
 {% endblock %}
