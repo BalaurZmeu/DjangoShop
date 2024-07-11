@@ -3,8 +3,20 @@ from django.http import JsonResponse
 import json
 import datetime
 from .models import *
+from django.contrib.auth.forms import UserCreationForm
 from .utils import cookieCart, cartData, guestOrder
 
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('store')
+    else:
+        form = UserCreationForm()
+    return render(request, 'store/user_register.html', {'form': form })
+    
 
 def store(request):
     data = cartData(request)

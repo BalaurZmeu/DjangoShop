@@ -1,0 +1,16 @@
+{% extends "store/main.html" %}
+
+{% block title %}
+  <title>Registration</title>
+{% endblock %}
+
+{% block content %}
+  <h2>Inregistrati un utilizator nou</h2>
+  <div class="col-sm-6">
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button>Inainte</button>
+    </form>
+  </div>
+{% endblock %}
