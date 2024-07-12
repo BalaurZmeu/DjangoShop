@@ -1,3 +1,4 @@
 venv
 .idea
 *.pyc
+django_shop/db.sqlite3
