@@ -2,7 +2,7 @@
 
 An e-commerce website, implemented using Django framework. You can add products and images to the website using
 the admin page. Registered and non-registered users can add products to the cart and then order them.
-The website is implemented using Romanian language. The 'Details' page, 'Register' and 'Login' pages are not ready yet.
+The website is implemented using Romanian language. 
 
 ---
 
